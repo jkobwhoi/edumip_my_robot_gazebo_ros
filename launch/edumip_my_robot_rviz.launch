@@ -1,0 +1,12 @@
+<launch>
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+
+  <include file="$(find joy_twist)/launch/edumip_joy.launch">
+
+  </include>
+
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(find edumip_my_robot_gazebo_ros)/urdf/edumip_my_robot.xacro" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find edumip_my_robot_gazebo_ros)/rviz/edumip_gazebo_rviz_hw6.rviz --fixed-frame world" required="true" />
+
+</launch>
